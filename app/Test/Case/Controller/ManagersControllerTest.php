@@ -14,6 +14,8 @@ class ManagersControllerTest extends ControllerTestCase {
 	public $fixtures = array(
 		'app.manager',
 		'app.ticket',
+		'app.robot',
+		'app.ticket_comment',
 		'app.user'
 	);
 

@@ -13,7 +13,10 @@ class RobotsControllerTest extends ControllerTestCase {
  */
 	public $fixtures = array(
 		'app.robot',
-		'app.ticket'
+		'app.ticket',
+		'app.manager',
+		'app.user',
+		'app.ticket_comment'
 	);
 
 /**

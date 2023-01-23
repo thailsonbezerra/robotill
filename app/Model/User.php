@@ -4,6 +4,8 @@ App::uses('AppModel', 'Model');
  * User Model
  *
  * @property Manager $Manager
+ * @property TicketComment $TicketComment
+ * @property Ticket $Ticket
  */
 class User extends AppModel {
 
@@ -13,6 +15,16 @@ class User extends AppModel {
  * @var array
  */
 	public $validate = array(
+		'name' => array(
+			'notBlank' => array(
+				'rule' => array('notBlank'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
 		'username' => array(
 			'notBlank' => array(
 				'rule' => array('notBlank'),
@@ -71,4 +83,39 @@ class User extends AppModel {
 			'order' => ''
 		)
 	);
+
+/**
+ * hasMany associations
+ *
+ * @var array
+ */
+	public $hasMany = array(
+		'TicketComment' => array(
+			'className' => 'TicketComment',
+			'foreignKey' => 'user_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		),
+		'Ticket' => array(
+			'className' => 'Ticket',
+			'foreignKey' => 'user_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		)
+	);
+
 }

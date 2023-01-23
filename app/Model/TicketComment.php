@@ -3,6 +3,7 @@ App::uses('AppModel', 'Model');
 /**
  * TicketComment Model
  *
+ * @property User $User
  * @property Ticket $Ticket
  */
 class TicketComment extends AppModel {
@@ -16,6 +17,16 @@ class TicketComment extends AppModel {
 		'comment' => array(
 			'notBlank' => array(
 				'rule' => array('notBlank'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'user_id' => array(
+			'numeric' => array(
+				'rule' => array('numeric'),
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,
@@ -43,6 +54,13 @@ class TicketComment extends AppModel {
  * @var array
  */
 	public $belongsTo = array(
+		'User' => array(
+			'className' => 'User',
+			'foreignKey' => 'user_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
+		),
 		'Ticket' => array(
 			'className' => 'Ticket',
 			'foreignKey' => 'ticket_id',

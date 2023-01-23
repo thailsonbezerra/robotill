@@ -13,7 +13,10 @@ class UsersControllerTest extends ControllerTestCase {
  */
 	public $fixtures = array(
 		'app.user',
-		'app.manager'
+		'app.manager',
+		'app.ticket',
+		'app.robot',
+		'app.ticket_comment'
 	);
 
 /**
