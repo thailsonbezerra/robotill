@@ -21,9 +21,14 @@
 			<?php echo h($ticketComment['TicketComment']['modified']); ?>
 			&nbsp;
 		</dd>
+		<dt><?php echo __('User Id'); ?></dt>
+		<dd>
+			<?php echo h($ticketComment['TicketComment']['user_id']); ?>
+			&nbsp;
+		</dd>
 		<dt><?php echo __('Ticket'); ?></dt>
 		<dd>
-			<?php echo $this->Html->link($ticketComment['Ticket']['id'], array('controller' => 'tickets', 'action' => 'view', $ticketComment['Ticket']['id'])); ?>
+			<?php echo $this->Html->link($ticketComment['Ticket']['title'], array('controller' => 'tickets', 'action' => 'view', $ticketComment['Ticket']['id'])); ?>
 			&nbsp;
 		</dd>
 	</dl>

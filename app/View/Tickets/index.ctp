@@ -4,10 +4,12 @@
 	<thead>
 	<tr>
 			<th><?php echo $this->Paginator->sort('id'); ?></th>
+			<th><?php echo $this->Paginator->sort('title'); ?></th>
 			<th><?php echo $this->Paginator->sort('open'); ?></th>
 			<th><?php echo $this->Paginator->sort('cod'); ?></th>
 			<th><?php echo $this->Paginator->sort('created'); ?></th>
 			<th><?php echo $this->Paginator->sort('modified'); ?></th>
+			<th><?php echo $this->Paginator->sort('user_id'); ?></th>
 			<th><?php echo $this->Paginator->sort('robot_id'); ?></th>
 			<th><?php echo $this->Paginator->sort('manager_id'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
@@ -17,10 +19,12 @@
 	<?php foreach ($tickets as $ticket): ?>
 	<tr>
 		<td><?php echo h($ticket['Ticket']['id']); ?>&nbsp;</td>
+		<td><?php echo h($ticket['Ticket']['title']); ?>&nbsp;</td>
 		<td><?php echo h($ticket['Ticket']['open']); ?>&nbsp;</td>
 		<td><?php echo h($ticket['Ticket']['cod']); ?>&nbsp;</td>
 		<td><?php echo h($ticket['Ticket']['created']); ?>&nbsp;</td>
 		<td><?php echo h($ticket['Ticket']['modified']); ?>&nbsp;</td>
+		<td><?php echo h($ticket['Ticket']['user_id']); ?>&nbsp;</td>
 		<td>
 			<?php echo $this->Html->link($ticket['Robot']['id'], array('controller' => 'robots', 'action' => 'view', $ticket['Robot']['id'])); ?>
 		</td>

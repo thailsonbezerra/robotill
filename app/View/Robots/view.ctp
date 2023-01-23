@@ -16,6 +16,11 @@
 			<?php echo h($robot['Robot']['type_curt']); ?>
 			&nbsp;
 		</dd>
+		<dt><?php echo __('Description'); ?></dt>
+		<dd>
+			<?php echo h($robot['Robot']['description']); ?>
+			&nbsp;
+		</dd>
 		<dt><?php echo __('Created'); ?></dt>
 		<dd>
 			<?php echo h($robot['Robot']['created']); ?>
@@ -45,10 +50,12 @@
 	<table cellpadding = "0" cellspacing = "0">
 	<tr>
 		<th><?php echo __('Id'); ?></th>
+		<th><?php echo __('Title'); ?></th>
 		<th><?php echo __('Open'); ?></th>
 		<th><?php echo __('Cod'); ?></th>
 		<th><?php echo __('Created'); ?></th>
 		<th><?php echo __('Modified'); ?></th>
+		<th><?php echo __('User Id'); ?></th>
 		<th><?php echo __('Robot Id'); ?></th>
 		<th><?php echo __('Manager Id'); ?></th>
 		<th class="actions"><?php echo __('Actions'); ?></th>
@@ -56,10 +63,12 @@
 	<?php foreach ($robot['Ticket'] as $ticket): ?>
 		<tr>
 			<td><?php echo $ticket['id']; ?></td>
+			<td><?php echo $ticket['title']; ?></td>
 			<td><?php echo $ticket['open']; ?></td>
 			<td><?php echo $ticket['cod']; ?></td>
 			<td><?php echo $ticket['created']; ?></td>
 			<td><?php echo $ticket['modified']; ?></td>
+			<td><?php echo $ticket['user_id']; ?></td>
 			<td><?php echo $ticket['robot_id']; ?></td>
 			<td><?php echo $ticket['manager_id']; ?></td>
 			<td class="actions">

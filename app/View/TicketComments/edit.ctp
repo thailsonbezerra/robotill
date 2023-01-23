@@ -5,6 +5,7 @@
 	<?php
 		echo $this->Form->input('id');
 		echo $this->Form->input('comment');
+		echo $this->Form->input('user_id');
 		echo $this->Form->input('ticket_id');
 	?>
 	</fieldset>

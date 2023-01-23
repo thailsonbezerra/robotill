@@ -3,8 +3,10 @@
 	<fieldset>
 		<legend><?php echo __('Add Ticket'); ?></legend>
 	<?php
+		echo $this->Form->input('title');
 		echo $this->Form->input('open');
 		echo $this->Form->input('cod');
+		echo $this->Form->input('user_id');
 		echo $this->Form->input('robot_id');
 		echo $this->Form->input('manager_id');
 	?>

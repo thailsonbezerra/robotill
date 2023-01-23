@@ -6,6 +6,7 @@
 			<th><?php echo $this->Paginator->sort('id'); ?></th>
 			<th><?php echo $this->Paginator->sort('type'); ?></th>
 			<th><?php echo $this->Paginator->sort('type_curt'); ?></th>
+			<th><?php echo $this->Paginator->sort('description'); ?></th>
 			<th><?php echo $this->Paginator->sort('created'); ?></th>
 			<th><?php echo $this->Paginator->sort('modified'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
@@ -17,6 +18,7 @@
 		<td><?php echo h($robot['Robot']['id']); ?>&nbsp;</td>
 		<td><?php echo h($robot['Robot']['type']); ?>&nbsp;</td>
 		<td><?php echo h($robot['Robot']['type_curt']); ?>&nbsp;</td>
+		<td><?php echo h($robot['Robot']['description']); ?>&nbsp;</td>
 		<td><?php echo h($robot['Robot']['created']); ?>&nbsp;</td>
 		<td><?php echo h($robot['Robot']['modified']); ?>&nbsp;</td>
 		<td class="actions">

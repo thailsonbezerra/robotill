@@ -7,6 +7,7 @@
 			<th><?php echo $this->Paginator->sort('comment'); ?></th>
 			<th><?php echo $this->Paginator->sort('created'); ?></th>
 			<th><?php echo $this->Paginator->sort('modified'); ?></th>
+			<th><?php echo $this->Paginator->sort('user_id'); ?></th>
 			<th><?php echo $this->Paginator->sort('ticket_id'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
@@ -18,8 +19,9 @@
 		<td><?php echo h($ticketComment['TicketComment']['comment']); ?>&nbsp;</td>
 		<td><?php echo h($ticketComment['TicketComment']['created']); ?>&nbsp;</td>
 		<td><?php echo h($ticketComment['TicketComment']['modified']); ?>&nbsp;</td>
+		<td><?php echo h($ticketComment['TicketComment']['user_id']); ?>&nbsp;</td>
 		<td>
-			<?php echo $this->Html->link($ticketComment['Ticket']['id'], array('controller' => 'tickets', 'action' => 'view', $ticketComment['Ticket']['id'])); ?>
+			<?php echo $this->Html->link($ticketComment['Ticket']['title'], array('controller' => 'tickets', 'action' => 'view', $ticketComment['Ticket']['id'])); ?>
 		</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $ticketComment['TicketComment']['id'])); ?>

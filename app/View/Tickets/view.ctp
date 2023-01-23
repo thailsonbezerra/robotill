@@ -6,6 +6,11 @@
 			<?php echo h($ticket['Ticket']['id']); ?>
 			&nbsp;
 		</dd>
+		<dt><?php echo __('Title'); ?></dt>
+		<dd>
+			<?php echo h($ticket['Ticket']['title']); ?>
+			&nbsp;
+		</dd>
 		<dt><?php echo __('Open'); ?></dt>
 		<dd>
 			<?php echo h($ticket['Ticket']['open']); ?>
@@ -24,6 +29,11 @@
 		<dt><?php echo __('Modified'); ?></dt>
 		<dd>
 			<?php echo h($ticket['Ticket']['modified']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('User Id'); ?></dt>
+		<dd>
+			<?php echo h($ticket['Ticket']['user_id']); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Robot'); ?></dt>
@@ -62,6 +72,7 @@
 		<th><?php echo __('Comment'); ?></th>
 		<th><?php echo __('Created'); ?></th>
 		<th><?php echo __('Modified'); ?></th>
+		<th><?php echo __('User Id'); ?></th>
 		<th><?php echo __('Ticket Id'); ?></th>
 		<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
@@ -71,6 +82,7 @@
 			<td><?php echo $ticketComment['comment']; ?></td>
 			<td><?php echo $ticketComment['created']; ?></td>
 			<td><?php echo $ticketComment['modified']; ?></td>
+			<td><?php echo $ticketComment['user_id']; ?></td>
 			<td><?php echo $ticketComment['ticket_id']; ?></td>
 			<td class="actions">
 				<?php echo $this->Html->link(__('View'), array('controller' => 'ticket_comments', 'action' => 'view', $ticketComment['id'])); ?>
