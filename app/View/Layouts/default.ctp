@@ -17,7 +17,8 @@
 				<a class="navbar-brand" href="#">ROBOTILL</a>
 			</div>
 			<ul class="nav navbar-nav">
-				<li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+				<li><a href="/users/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+				<li><a href="#"><span class="glyphicon glyphicon-user"></span> Logado</a></li>
 			</ul>
 		</div>
 	</nav>
