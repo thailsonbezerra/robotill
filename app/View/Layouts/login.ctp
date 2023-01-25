@@ -57,7 +57,7 @@
         }
 
         button {
-            background-color: #212121;
+            background-color: #428bca;
             color: #fff;
         }
     </style>
