@@ -31,4 +31,24 @@ App::uses('Controller', 'Controller');
  * @link		https://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
 class AppController extends Controller {
+    /**
+     * Components
+     *
+     * @var array
+     */
+    public $components = array(
+        'Paginator',
+        'Auth' => array(
+            'flash' =>array('element'=>'bootstrap', 'params'=>array('key'=>'warning'),'key'=>'warning'),
+            'authError' => 'Você não possui permissão para acessar essa operação.',
+            'loginAction' => '/login',
+            'loginRedirect' => '/tickets',
+            'logoutRedirect' => '/login',
+            'authenticate' => array(
+                'Form' => array(
+                    'passwordHasher' => array('className' => 'Simple', 'hashType' => 'sha256')
+                )
+            )
+        )
+    );
 }

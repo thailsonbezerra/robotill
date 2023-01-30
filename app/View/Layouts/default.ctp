@@ -31,7 +31,7 @@
 			</div>
 			<ul class="nav navbar-nav">
 				<li><a href="/users/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-				<li><a href="#"><span class="glyphicon glyphicon-user"></span> Logado</a></li>
+				<li><a href="/users/logout"><span class="glyphicon glyphicon-user"></span> Logout</a></li>
 			</ul>
 		</div>
 	</nav>
