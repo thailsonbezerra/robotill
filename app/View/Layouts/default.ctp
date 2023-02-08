@@ -12,19 +12,47 @@
 <body>
 
 	<style>
-		.nav-sidebar>.active>a {
+		.navbar.navbar-inverse {
+			border-radius: 0;
+			margin: 0;
+		}
+
+		.nav-sidebar {
+			border: #ccc solid 1px;
+			height: 100vh;
+		}
+
+		.nav-sidebar li a {
+			border-bottom: #bbb solid 1px;
+		}
+
+		.nav-sidebar>.active>a,
+		.nav-sidebar>.active>a:focus,
+		.nav-sidebar>.active>a:hover {
 			color: #fff;
 			background-color: #428bca;
+			font-weight: bold;
+
 		}
 
-		.nav-sidebar>li>a:hover{
-			color: #000 ;
+		.nav-sub-sidebar>.active>a,
+		.nav-sub-sidebar>.active>a:focus,
+		.nav-sub-sidebar>.active>a:hover {
+			color: #fff;
+			background-color: #A7D7FF;
+			font-weight: bold;
 		}
 
-		
+		.nav.nav-sub-sidebar>li>a {
+			padding: 10px 30px;
+		}
+
+		#content {
+			padding: 20px 0;
+		}
 	</style>
 
-	<nav class="navbar navbar-inverse" style="border-radius: 0">
+	<nav class="navbar navbar-inverse">
 		<div class="container-fluid" style="display: flex; justify-content: space-between">
 			<div class="navbar-header">
 				<a class="navbar-brand" href="#">ROBOTILL</a>
@@ -39,22 +67,21 @@
 	<div class="container-fluid">
 		<div class="col-sm-3 col-md-2 sidebar" style="padding: 0;">
 			<ul class="nav nav-sidebar">
-				<li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
-				<li><a href="#">Reports</a></li>
-				<li><a href="#">Analytics</a></li>
-				<li><a href="#">Export</a></li>
-			</ul>
-			<ul class="nav nav-sidebar">
-				<li><a href="">Nav item</a></li>
-				<li><a href="">Nav item again</a></li>
-				<li><a href="">One more nav</a></li>
-				<li><a href="">Another nav item</a></li>
-				<li><a href="">More navigation</a></li>
-			</ul>
-			<ul class="nav nav-sidebar">
-				<li><a href="">Nav item again</a></li>
-				<li><a href="">One more nav</a></li>
-				<li><a href="">Another nav item</a></li>
+				<li><a href="#">Home</a></li>
+
+				<li class="active">
+					<a href="#">Tickets <span class="caret"></span></a>
+
+					<ol class="nav nav-sub-sidebar">
+						<li class="active"><a href="#">List</a></li>
+						<li><a href="#">New</a></li>
+						<li><a href="#">Edit</a></li>
+					</ol>
+				</li>
+
+				<li><a href="#">Robots <span class="caret"></span></a></li>
+				<li><a href="#">Managers <span class="caret"></span></a></li>
+				<li><a href="#">Users <span class="caret"></span></a></li>
 			</ul>
 		</div>
 
@@ -68,16 +95,8 @@
 			</div>
 		</div>
 
-
-
-
-		<!-- Latest compiled and minified CSS -->
 		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
-
-		<!-- Optional theme -->
 		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css">
-
-		<!-- Latest compiled and minified JavaScript -->
 		<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 </body>
 
