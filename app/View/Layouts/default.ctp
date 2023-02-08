@@ -6,7 +6,8 @@
 	<title>
 		Robotill
 	</title>
-
+	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 </head>
 
 <body>
@@ -52,6 +53,9 @@
 		}
 	</style>
 
+
+
+
 	<nav class="navbar navbar-inverse">
 		<div class="container-fluid" style="display: flex; justify-content: space-between">
 			<div class="navbar-header">
@@ -70,18 +74,33 @@
 				<li><a href="#">Home</a></li>
 
 				<li class="active">
-					<a href="#">Tickets <span class="caret"></span></a>
-
-					<ol class="nav nav-sub-sidebar">
-						<li class="active"><a href="#">List</a></li>
-						<li><a href="#">New</a></li>
-						<li><a href="#">Edit</a></li>
-					</ol>
+					<a href="#" data-toggle="collapse" data-target="#nav-tickets">Tickets <span class="caret"></span></a>
 				</li>
-
-				<li><a href="#">Robots <span class="caret"></span></a></li>
-				<li><a href="#">Managers <span class="caret"></span></a></li>
-				<li><a href="#">Users <span class="caret"></span></a></li>
+				<ol id="nav-tickets" class="nav nav-sub-sidebar collapse out">
+					<li class=" active"><a href="#">List</a></li>
+					<li><a href="#">New</a></li>
+					<li><a href="#">Edit</a></li>
+				</ol>
+				<li>
+					<a href="#" data-toggle="collapse" data-target="#nav-robots">Robots <span class="caret"></span></a>
+				</li>
+				<ol id="nav-robots" class="nav nav-sub-sidebar collapse out">
+					<li><a href="#">List</a></li>
+					<li><a href="#">New</a></li>
+					<li><a href="#">Edit</a></li>
+				</ol>
+				<li><a href="#" data-toggle="collapse" data-target="#nav-managers">Managers <span class="caret"></span></a></li>
+				<ol id="nav-managers" class="nav nav-sub-sidebar collapse out">
+					<li><a href="#">List</a></li>
+					<li><a href="#">New</a></li>
+					<li><a href="#">Edit</a></li>
+				</ol>
+				<li><a href="#" data-toggle="collapse" data-target="#nav-users">Users <span class="caret"></span></a></li>
+				<ol id="nav-users" class="nav nav-sub-sidebar collapse out">
+					<li><a href="#">List</a></li>
+					<li><a href="#">New</a></li>
+					<li><a href="#">Edit</a></li>
+				</ol>
 			</ul>
 		</div>
 
@@ -94,10 +113,12 @@
 
 			</div>
 		</div>
+	</div>
 
-		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
-		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css">
-		<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css">
+	<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+
 </body>
 
 </html>
