@@ -110,6 +110,8 @@ class UsersController extends AppController
 		$this->layout = 'login';
 		if($this->request->is('post')){
 			if($this->Auth->login()){
+				$user_id = $this->Auth::user('id');
+				$this->Session->write('user_id',$user_id);
 				return $this->redirect($this->Auth->redirectUrl());
 			}
 			$this->Flash->error(__('Usuário ou senha incorretos.'));

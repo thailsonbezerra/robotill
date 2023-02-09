@@ -38,6 +38,7 @@ class AppController extends Controller {
      */
     public $components = array(
         'Paginator',
+        'Session',
         'Auth' => array(
             'flash' =>array('element'=>'bootstrap', 'params'=>array('key'=>'warning'),'key'=>'warning'),
             'authError' => 'Você não possui permissão para acessar essa operação.',

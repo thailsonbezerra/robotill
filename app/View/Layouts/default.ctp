@@ -60,8 +60,8 @@
 				<a class="navbar-brand" href="#">ROBOTILL</a>
 			</div>
 			<ul class="nav navbar-nav navbar-right" style="margin-right: 0;">
-				<li><a href="/users/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-				<li><a href="/users/logout"><span class="glyphicon glyphicon-user"></span> Logout</a></li>
+				<li><a href="#"><span class="glyphicon glyphicon-user"></span> <?php echo $this->Session->read('Auth.User.username') ?></a></li>
+				<li><a href="/users/logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
 			</ul>
 		</div>
 	</nav>

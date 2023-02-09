@@ -55,9 +55,24 @@ class TicketsController extends AppController {
 				$this->Flash->error(__('The ticket could not be saved. Please, try again.'));
 			}
 		}
-		$robots = $this->Ticket->Robot->find('list');
-		$managers = $this->Ticket->Manager->find('list');
-		$this->set(compact('robots', 'managers'));
+
+		$user_id =$this->Session->read('user_id');
+
+		$robots = $this->Ticket->Robot->find('list', array(
+			'fields' => array('Robot.type')
+		));
+		$managers = $this->Ticket->Manager->find('list',array(
+			'fields'=>'Manager.name_curt'
+		));
+		$users = $this->Ticket->User->find('list',array(
+			'fields'=>'User.manager_id',
+			'conditions' => array('User.id =' => $user_id)
+		));
+		
+		$this->request->data['Ticket']['open'] = true;
+		$this->request->data['Ticket']['user_id']= $user_id;
+		$this->request->data['Ticket']['manager_id']= $users=[$user_id];
+		$this->set(compact('robots', 'managers','users'));
 	}
 
 /**
