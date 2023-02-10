@@ -21,8 +21,9 @@ class TicketsController extends AppController {
  * @return void
  */
 	public function index() {
-		$this->Ticket->recursive = 0;
-		$this->set('tickets', $this->Paginator->paginate());
+		//$this->Ticket->recursive = 0;
+		//$this->set('tickets', $this->Paginator->paginate());
+		$this->set('tickets', $this->Ticket->find('all'));
 	}
 
 /**
@@ -48,18 +49,30 @@ class TicketsController extends AppController {
 	public function add() {
 		if ($this->request->is('post')) {
 			$user_id = $this->Session->read('user_id');
+			$manager_id = $this->Session->read('manager_id');
+
 
 			$users = $this->Ticket->User->find('list', array(
 				'fields' => 'User.manager_id',
 				'conditions' => array('User.id =' => $user_id)
 			));
 
-			
+			$sql_name_curt_manager = "SELECT name_curt from managers WHERE id =". $manager_id;
+			$result_name_curt_manager = $this->Ticket->Robot->query($sql_name_curt_manager);
+			$name_curt_manager = $result_name_curt_manager[0][0]['name_curt'];
+
+			$robot_id = $this->request->data['Ticket']['robot_id'];
+			$sql_type_curt_robot = "SELECT type_curt from robots where id = " . $robot_id;
+			$result_type_curt_robot = $this->Ticket->Robot->query($sql_type_curt_robot);
+			$type_curt_robot = $result_type_curt_robot[0][0]['type_curt'];
+
 			$this->request->data['Ticket']['user_id'] = $user_id;
 			$this->request->data['Ticket']['manager_id'] = $users[$user_id];
 			$this->request->data['Ticket']['open'] = true;
+			$this->request->data['Ticket']['cod'] = $name_curt_manager.$type_curt_robot;
 
 			$this->Ticket->create();
+
 			if ($this->Ticket->save($this->request->data)) {
 				$ticket_id = $this->Ticket->getLastInsertID();
 				$data_ticket_comment = [
@@ -85,11 +98,8 @@ class TicketsController extends AppController {
 		$robots = $this->Ticket->Robot->find('list', array(
 			'fields' => array('Robot.type')
 		));
-		$managers = $this->Ticket->Manager->find('list', array(
-			'fields' => 'Manager.name_curt'
-		));
-	
-		$this->set(compact('robots', 'managers'));
+		
+		$this->set(compact('robots'));
 	}
 
 /**
