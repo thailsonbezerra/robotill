@@ -1,5 +1,3 @@
-
-
 <div class="tickets form">
 
 		<legend><?php echo __('Add Ticket'); ?></legend>
@@ -33,8 +31,5 @@
 			'class'=> 'btn btn-block btn-primary')
 		);
 		
-		echo $form;
-
-	
-		?>
+		echo $form;?>
 </div>
