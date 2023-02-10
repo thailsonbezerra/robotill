@@ -1,28 +1,40 @@
-<div class="tickets form">
-<?php echo $this->Form->create('Ticket'); ?>
-	<fieldset>
-		<legend><?php echo __('Add Ticket'); ?></legend>
-	<?php
-		echo $this->Form->input('title');
-		echo $this->Form->input('open');
-		echo $this->Form->input('cod');
-		echo $this->Form->input('user_id');
-		echo $this->Form->input('robot_id');
-		echo $this->Form->input('manager_id');
-	?>
-	</fieldset>
-<?php echo $this->Form->end(__('Submit')); ?>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
 
-		<li><?php echo $this->Html->link(__('List Tickets'), array('action' => 'index')); ?></li>
-		<li><?php echo $this->Html->link(__('List Robots'), array('controller' => 'robots', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Robot'), array('controller' => 'robots', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Managers'), array('controller' => 'managers', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Manager'), array('controller' => 'managers', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Ticket Comments'), array('controller' => 'ticket_comments', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Ticket Comment'), array('controller' => 'ticket_comments', 'action' => 'add')); ?> </li>
-	</ul>
+
+<div class="tickets form">
+
+		<legend><?php echo __('Add Ticket'); ?></legend>
+
+		<?php
+
+		$form = $this->Form->create('Ticket');
+		$form .= $this->Form->input('title', array(
+			'label' => 'Título',
+			'placeholder' => 'Título',
+			'div' => 'form-group',
+			'class' => 'form-control',
+			'type' => 'text'
+		));			 
+		$form .= $this->Form->input('robot_id',array(
+			'label' => 'Robô',
+			'placeholder'=> 'Escolha o Robô',
+			'div' => 'form-group',
+			'class'=> 'form-control'
+		));
+
+		$form .= $this->Form->input('comment', array(
+			'label' => 'Descrição',
+			'div' => 'form-group',
+			'class' => 'form-control',
+			'type' => 'textarea',
+		));
+		
+		$form .= $this->Form->end(array(
+			'label'=>'Salvar',
+			'class'=> 'btn btn-block btn-primary')
+		);
+		
+		echo $form;
+
+	
+		?>
 </div>

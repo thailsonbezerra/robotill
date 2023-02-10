@@ -47,8 +47,33 @@ class TicketsController extends AppController {
  */
 	public function add() {
 		if ($this->request->is('post')) {
+			$user_id = $this->Session->read('user_id');
+
+			$users = $this->Ticket->User->find('list', array(
+				'fields' => 'User.manager_id',
+				'conditions' => array('User.id =' => $user_id)
+			));
+
+			
+			$this->request->data['Ticket']['user_id'] = $user_id;
+			$this->request->data['Ticket']['manager_id'] = $users[$user_id];
+			$this->request->data['Ticket']['open'] = true;
+
 			$this->Ticket->create();
 			if ($this->Ticket->save($this->request->data)) {
+				$ticket_id = $this->Ticket->getLastInsertID();
+				$data_ticket_comment = [
+					'TicketComment' => [
+						'comment' => $this->request->data['Ticket']['comment'],
+						'user_id' => $user_id,
+						'ticket_id' => $ticket_id,
+					]
+				];
+
+				$this->Ticket->TicketComment->create();
+				$this->Ticket->TicketComment->save($data_ticket_comment);
+				$this->Ticket->TicketComment->clear();
+
 				$this->Flash->success(__('The ticket has been saved.'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
@@ -56,23 +81,15 @@ class TicketsController extends AppController {
 			}
 		}
 
-		$user_id =$this->Session->read('user_id');
 
 		$robots = $this->Ticket->Robot->find('list', array(
 			'fields' => array('Robot.type')
 		));
-		$managers = $this->Ticket->Manager->find('list',array(
-			'fields'=>'Manager.name_curt'
+		$managers = $this->Ticket->Manager->find('list', array(
+			'fields' => 'Manager.name_curt'
 		));
-		$users = $this->Ticket->User->find('list',array(
-			'fields'=>'User.manager_id',
-			'conditions' => array('User.id =' => $user_id)
-		));
-		
-		$this->request->data['Ticket']['open'] = true;
-		$this->request->data['Ticket']['user_id']= $user_id;
-		$this->request->data['Ticket']['manager_id']= $users=[$user_id];
-		$this->set(compact('robots', 'managers','users'));
+	
+		$this->set(compact('robots', 'managers'));
 	}
 
 /**
