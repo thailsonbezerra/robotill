@@ -1,30 +1,79 @@
 <div class="tickets form">
-<?php echo $this->Form->create('Ticket'); ?>
-	<fieldset>
-		<legend><?php echo __('Edit Ticket'); ?></legend>
-	<?php
-		echo $this->Form->input('id');
-		echo $this->Form->input('title');
-		echo $this->Form->input('open');
-		echo $this->Form->input('cod');
-		echo $this->Form->input('user_id');
-		echo $this->Form->input('robot_id');
-		echo $this->Form->input('manager_id');
-	?>
-	</fieldset>
-<?php echo $this->Form->end(__('Submit')); ?>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
+		
+		<legend>
+			<?php echo ('Nova interação para o Ticket ') . $tickets[0]['Ticket']['cod'] . $tickets[0]['Ticket']['id'];?>
+		</legend>
+		<?php
 
-		<li><?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $this->Form->value('Ticket.id')), array('confirm' => __('Are you sure you want to delete # %s?', $this->Form->value('Ticket.id')))); ?></li>
-		<li><?php echo $this->Html->link(__('List Tickets'), array('action' => 'index')); ?></li>
-		<li><?php echo $this->Html->link(__('List Robots'), array('controller' => 'robots', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Robot'), array('controller' => 'robots', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Managers'), array('controller' => 'managers', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Manager'), array('controller' => 'managers', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Ticket Comments'), array('controller' => 'ticket_comments', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Ticket Comment'), array('controller' => 'ticket_comments', 'action' => 'add')); ?> </li>
-	</ul>
+		$form = $this->Form->create('Ticket', array(
+			'style' => 'margin-bottom:32px'
+		));
+		$form .= $this->Form->input('title', array(
+			'label' => 'Título',
+			'placeholder' => 'Título',
+			'div' => 'form-group',
+			'class' => 'form-control',
+			'type' => 'text',
+			'readonly'=>'readonly'
+		));
+		$form .= $this->Form->input('robot_id', array(
+			'label' => 'Robô',
+			'placeholder' => 'Escolha o Robô',
+			'div' => 'form-group',
+			'class' => 'form-control',
+			'options' => array($tickets[0]['Ticket']['robot_id'] => $tickets[0]['Robot']['type']),
+			'readonly' => 'readonly'
+		));
+
+		$form .= $this->Form->input('comment', array(
+			'label' => 'Descrição',
+			'div' => 'form-group',
+			'class' => 'form-control',
+			'type' => 'textarea',
+		));
+
+		$form .= $this->Form->input('open', array(
+			'label' => 'Status',
+			'div' => 'form-group',
+			'class' => 'form-control',
+			'default' => 'Interação',
+			'options' => array('Fechado','Interacão')
+		));
+
+
+		$form .= $this->Form->end(
+			array(
+				'label' => 'Salvar',
+				'class' => 'btn btn-block btn-primary'
+			)
+		);
+
+		echo $form; ?>
+
+		<legend>Histórico de Interações</legend>
+
+		<?php
+
+		$ticketComments = $tickets[0]['TicketComment'];
+		foreach ($ticketComments as $ticketComment) :
+			$user_comment_name;
+			foreach ($users_ticket_comments as $users_ticket_comment) :
+				if($users_ticket_comment[0]['user_id'] === $ticketComment['user_id']){
+					$user_comment_name = $users_ticket_comment[0]['name'];
+				}
+			endforeach;
+
+			echo $this->Form->input('comment', array(
+				'label' => 'Interação 1 Realizada em '. $ticketComment['created'] . ' por '. $user_comment_name,
+				'div' => 'form-group',
+				'class' => 'form-control',
+				'type' => 'textarea',
+				'disabled' => true,
+				'value' => $ticketComment['comment']
+			));
+		endforeach;?>
+
+
+
+
 </div>
