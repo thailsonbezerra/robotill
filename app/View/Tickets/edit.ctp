@@ -1,7 +1,10 @@
 <div class="tickets form">
 		
 		<legend>
-			<?php echo ('Nova interação para o Ticket ') . $tickets[0]['Ticket']['cod'] . $tickets[0]['Ticket']['id'];?>
+			<?php echo ('Nova interação para o Ticket ')
+			.$tickets[0]['Ticket']['cod']
+			.$tickets[0]['Ticket']['id'] 
+			.(!$tickets[0]['Ticket']['open'] ? " (FECHADO)" : '')?>
 		</legend>
 		<?php
 
@@ -29,7 +32,7 @@
 			'label' => 'Descrição',
 			'div' => 'form-group',
 			'class' => 'form-control',
-			'type' => 'textarea',
+			'type' => !$tickets[0]['Ticket']['open'] ? 'hidden' : 'textarea'
 		));
 
 		$form .= $this->Form->input('open', array(
@@ -37,14 +40,17 @@
 			'div' => 'form-group',
 			'class' => 'form-control',
 			'default' => 'Interação',
-			'options' => array('Fechado','Interação')
+			'options' => array('Fechado','Interação'),
+			'disabled' => !$tickets[0]['Ticket']['open'] ? true : false
+	
 		));
 
 
 		$form .= $this->Form->end(
 			array(
 				'label' => 'Salvar',
-				'class' => 'btn btn-block btn-primary'
+				'class' => 'btn btn-block btn-primary',
+				'disabled' => !$tickets[0]['Ticket']['open'] ? true : false
 			)
 		);
 

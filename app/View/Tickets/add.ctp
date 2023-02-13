@@ -14,9 +14,9 @@
 		));			 
 		$form .= $this->Form->input('robot_id',array(
 			'label' => 'Robô',
-			'placeholder'=> 'Escolha o Robô',
 			'div' => 'form-group',
-			'class'=> 'form-control'
+			'class'=> 'form-control',
+			'empty' => 'Escolha o Robô'
 		));
 
 		$form .= $this->Form->input('comment', array(
