@@ -23,8 +23,9 @@
         $form .= $this->Form->end(
             array(
                 'label' => 'Entrar',
-                'class' =>'btn',
-        ));
+                'class' => 'btn',
+            )
+        );
 
         echo $form;
         ?>

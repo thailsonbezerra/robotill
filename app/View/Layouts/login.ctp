@@ -66,6 +66,10 @@
         <?php echo $this->Flash->render(); ?>
 
         <?php echo $this->fetch('content'); ?>
+
+        <footer style="position: absolute; padding: 12px 0; width: 100%; bottom: 0;">
+            <p style="text-align: center;">Robotill, por Thailson Bezerra</p>
+        </footer>
     </body>
 
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">

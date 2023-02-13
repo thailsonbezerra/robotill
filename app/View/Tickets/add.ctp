@@ -1,6 +1,6 @@
 <div class="tickets form">
 
-		<legend><?php echo __('Add Ticket'); ?></legend>
+		<legend><?php echo __('Abrir Ticket'); ?></legend>
 
 		<?php
 
@@ -32,4 +32,3 @@
 		);
 		
 		echo $form;?>
-</div>

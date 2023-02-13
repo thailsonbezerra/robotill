@@ -32,4 +32,3 @@
 			<?php endforeach; ?>
 		</table>
 	</div>
-	<hr>

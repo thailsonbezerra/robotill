@@ -60,13 +60,13 @@
 				<a class="navbar-brand" href="#">ROBOTILL</a>
 			</div>
 			<ul class="nav navbar-nav navbar-right" style="margin-right: 0;">
-				<li><a href="#"><span class="glyphicon glyphicon-user"></span> <?php echo $this->Session->read('Auth.User.username') ?></a></li>
+				<li><a href="#"><span class="glyphicon glyphicon-user"></span> Bem vindo, <?php echo $this->Session->read('Auth.User.username') ?></a></li>
 				<li><a href="/users/logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
 			</ul>
 		</div>
 	</nav>
 
-	<div style="display: flex;">
+	<div>
 		<div class="col-sm-2 sidebar" style="padding: 0;">
 			<ul class="nav nav-sidebar">
 				<li><a href="/">Home</a></li>
@@ -98,15 +98,19 @@
 			</ul>
 		</div>
 
-		<div class="col-md-9" style="border-left: #ccc solid 1px; height: 100vh">
-			<div id="content">
+		<div class="col-md-10" style="border-left: #ccc solid 1px;">
+			<div style="margin-bottom: 40px; " id="content">
 
 				<?php echo $this->Flash->render(); ?>
 
 				<?php echo $this->fetch('content'); ?>
 
 			</div>
+
 		</div>
+		<footer style="border-top: 1px solid #ccc;">
+			<p style="text-align: center; padding: 20px 0">Robotill, por Thailson Bezerra</p>
+		</footer>
 	</div>
 
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
