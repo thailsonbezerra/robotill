@@ -128,8 +128,6 @@ class TicketsController extends AppController {
 			$this->request->data['Ticket']['user_id'] = $user_id;
 			$this->request->data['Ticket']['manager_id'] = $users[$user_id];
 			
-			debug($this->request->data);
-
 			if ($this->Ticket->save($this->request->data)) {
 
 

@@ -37,7 +37,7 @@
 			'div' => 'form-group',
 			'class' => 'form-control',
 			'default' => 'Interação',
-			'options' => array('Fechado','Interacão')
+			'options' => array('Fechado','Interação')
 		));
 
 
@@ -54,24 +54,24 @@
 
 		<?php
 
-		$ticketComments = $tickets[0]['TicketComment'];
-		foreach ($ticketComments as $ticketComment) :
+		$ticket_comments = $tickets[0]['TicketComment'];
+		for ($index = count($ticket_comments); $index > 0; $index--) {
 			$user_comment_name;
 			foreach ($users_ticket_comments as $users_ticket_comment) :
-				if($users_ticket_comment[0]['user_id'] === $ticketComment['user_id']){
+				if($users_ticket_comment[0]['user_id'] === $ticket_comments[$index - 1]['user_id']){
 					$user_comment_name = $users_ticket_comment[0]['name'];
 				}
 			endforeach;
 
 			echo $this->Form->input('comment', array(
-				'label' => 'Interação 1 Realizada em '. $ticketComment['created'] . ' por '. $user_comment_name,
+				'label' => 'Interação '.($index).' Realizada em '. $ticket_comments[$index - 1]['created'] . ' por '. $user_comment_name,
 				'div' => 'form-group',
 				'class' => 'form-control',
 				'type' => 'textarea',
 				'disabled' => true,
-				'value' => $ticketComment['comment']
+				'value' => $ticket_comments[$index - 1]['comment']
 			));
-		endforeach;?>
+		};?>
 
 
 
