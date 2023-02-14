@@ -21,24 +21,7 @@ class TicketsController extends AppController {
  * @return void
  */
 	public function index() {
-		//$this->Ticket->recursive = 0;
-		//$this->set('tickets', $this->Paginator->paginate());
 		$this->set('tickets', $this->Ticket->find('all'));
-	}
-
-/**
- * view method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
-	public function view($id = null) {
-		if (!$this->Ticket->exists($id)) {
-			throw new NotFoundException(__('Invalid ticket'));
-		}
-		$options = array('conditions' => array('Ticket.' . $this->Ticket->primaryKey => $id));
-		$this->set('ticket', $this->Ticket->find('first', $options));
 	}
 
 /**
@@ -87,8 +70,8 @@ class TicketsController extends AppController {
 				$this->Ticket->TicketComment->save($data_ticket_comment);
 				$this->Ticket->TicketComment->clear();
 
-				$this->Flash->success(__('The ticket has been saved.'));
-				return $this->redirect(array('action' => 'index'));
+				$this->Flash->set('The ticket has been saved.');
+				return $this->redirect('/');
 			} else {
 				$this->Flash->error(__('The ticket could not be saved. Please, try again.'));
 			}
@@ -143,8 +126,8 @@ class TicketsController extends AppController {
 				$this->Ticket->TicketComment->save($data_ticket_comment);
 				$this->Ticket->TicketComment->clear();
 
-				$this->Flash->success(__('The ticket has been saved.'));
-				return $this->redirect(array('controller' => 'tickets','action' => 'index'));
+				$this->Flash->success('The ticket has been saved.');
+				return $this->redirect('/');
 			} else {
 				$this->Flash->error(__('The ticket could not be saved. Please, try again.'));
 			}
@@ -161,23 +144,4 @@ class TicketsController extends AppController {
 		$this->set(compact('tickets', 'users_ticket_comments'));
 	}
 
-/**
- * delete method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
-	public function delete($id = null) {
-		if (!$this->Ticket->exists($id)) {
-			throw new NotFoundException(__('Invalid ticket'));
-		}
-		$this->request->allowMethod('post', 'delete');
-		if ($this->Ticket->delete($id)) {
-			$this->Flash->success(__('The ticket has been deleted.'));
-		} else {
-			$this->Flash->error(__('The ticket could not be deleted. Please, try again.'));
-		}
-		return $this->redirect(array('action' => 'index'));
-	}
 }
