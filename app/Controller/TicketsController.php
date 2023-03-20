@@ -1,34 +1,16 @@
 <?php
 App::uses('AppController', 'Controller');
-/**
- * Tickets Controller
- *
- * @property Ticket $Ticket
- * @property PaginatorComponent $Paginator
- */
 class TicketsController extends AppController {
 
-/**
- * Components
- *
- * @var array
- */
-	public $components = array('Paginator');
-
-/**
- * index method
- *
- * @return void
- */
 	public function index() {
-		$this->set('tickets', $this->Ticket->find('all'));
+		$this->Paginator->settings = array(
+			'order'  => array('Ticket.created' => 'desc'),
+			'limit'  => 10,
+		);
+		$this->set('tickets', $this->paginate('Ticket'));
+	
 	}
 
-/**
- * add method
- *
- * @return void
- */
 	public function add() {
 		if ($this->request->is('post')) {
 			$user_id = $this->Session->read('user_id');
@@ -85,13 +67,6 @@ class TicketsController extends AppController {
 		$this->set(compact('robots'));
 	}
 
-/**
- * edit method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
 	public function edit($id = null) {
 		if (!$this->Ticket->exists($id)) {
 			throw new NotFoundException(__('Invalid ticket'));

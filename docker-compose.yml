@@ -5,7 +5,7 @@ services:
     build: .
     container_name: php-container
     ports:
-      - "3000:80"
+      - "8000:80"
     volumes:
       - .:/var/www/html
     depends_on: 
