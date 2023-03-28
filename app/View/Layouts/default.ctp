@@ -57,11 +57,11 @@
 	<nav class="navbar navbar-inverse">
 		<div>
 			<div class="navbar-header">
-				<a class="navbar-brand" href="#">ROBOTILL</a>
+				<a class="navbar-brand" href="/">ROBOTILL</a>
 			</div>
 			<ul class="nav navbar-nav navbar-right" style="margin-right: 0;">
 				<li><a href="#"><span class="glyphicon glyphicon-user"></span> Bem vindo, <?php echo $this->Session->read('Auth.User.username') ?></a></li>
-				<li><a href="/users/logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+				<li><a href="/users/logout"><span class="glyphicon glyphicon-log-in"></span> Sair</a></li>
 			</ul>
 		</div>
 	</nav>
@@ -69,31 +69,31 @@
 	<div>
 		<div class="col-sm-2 sidebar" style="padding: 0;">
 			<ul class="nav nav-sidebar">
-				<li><a href="/">Home</a></li>
+				<li><a href="/">Início</a></li>
 
 				<li class="active">
 					<a href="#" data-toggle="collapse" data-target="#nav-tickets">Tickets <span class="glyphicon glyphicon-menu-down navbar-right"></span></a>
 				</li>
 				<ol id="nav-tickets" class="nav nav-sub-sidebar collapse out">
-					<li class=" active"><a href="/">List</a></li>
-					<li><a href="/tickets/add">New</a></li>
+					<li class=" active"><a href="/">Listar</a></li>
+					<li><a href="/tickets/add">Abrir</a></li>
 				</ol>
 				<li>
 					<a href="#" data-toggle="collapse" data-target="#nav-robots">Robots <span class="glyphicon glyphicon-menu-down navbar-right"></span></a>
 				</li>
 				<ol id="nav-robots" class="nav nav-sub-sidebar collapse out">
-					<li><a href="/robots">List</a></li>
-					<li><a href="/robots/add">New</a></li>
+					<li><a href="/robots">Listar</a></li>
+					<li><a href="/robots/add">Abrir</a></li>
 				</ol>
 				<li><a href="#" data-toggle="collapse" data-target="#nav-managers">Managers <span class="glyphicon glyphicon-menu-down navbar-right"></span></a></li>
 				<ol id="nav-managers" class="nav nav-sub-sidebar collapse out">
-					<li><a href="/managers">List</a></li>
-					<li><a href="/managers/add">New</a></li>
+					<li><a href="/managers">Listar</a></li>
+					<li><a href="/managers/add">Abrir</a></li>
 				</ol>
 				<li><a href="#" data-toggle="collapse" data-target="#nav-users">Users <span class="glyphicon glyphicon-menu-down navbar-right"></span></a></li>
 				<ol id="nav-users" class="nav nav-sub-sidebar collapse out">
-					<li><a href="/users">List</a></li>
-					<li><a href="/users/add">New</a></li>
+					<li><a href="/users">Listar</a></li>
+					<li><a href="/users/add">Abrir</a></li>
 				</ol>
 			</ul>
 		</div>

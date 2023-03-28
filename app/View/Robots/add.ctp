@@ -1,21 +1,34 @@
 <div class="robots form">
-<?php echo $this->Form->create('Robot'); ?>
-	<fieldset>
-		<legend><?php echo __('Add Robot'); ?></legend>
-	<?php
-		echo $this->Form->input('type');
-		echo $this->Form->input('type_curt');
-		echo $this->Form->input('description');
-	?>
-	</fieldset>
-<?php echo $this->Form->end(__('Submit')); ?>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
+	<legend><?php echo __('Add Robot'); ?></legend>
 
-		<li><?php echo $this->Html->link(__('List Robots'), array('action' => 'index')); ?></li>
-		<li><?php echo $this->Html->link(__('List Tickets'), array('controller' => 'tickets', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Ticket'), array('controller' => 'tickets', 'action' => 'add')); ?> </li>
-	</ul>
-</div>
+	<?php
+		$form = $this->Form->create('Robot'); 
+		$form .= $this->Form->input('type', array(
+			'label' => 'Tipo',
+			'div' => 'form-group',
+			'class' => 'form-control',
+			'type' => 'text'
+		));
+		$form .= $this->Form->input('type_curt', array(
+			'label' => 'Sigla Tipo',
+			'div' => 'form-group',
+			'class' => 'form-control',
+			'type' => 'text'
+		));
+		$form .= $this->Form->input('description', array(
+			'label' => 'Descrição',
+			'div' => 'form-group',
+			'class' => 'form-control',
+			'type' => 'textarea'
+		));
+
+		$form .= $this->Form->end(
+			array(
+				'label' => 'Salvar',
+				'class' => 'btn btn-block btn-primary'
+			)
+		);
+	
+		echo $form
+	?>
+

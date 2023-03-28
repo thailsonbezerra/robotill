@@ -1,23 +1,44 @@
 <div class="users form">
-<?php echo $this->Form->create('User'); ?>
-	<fieldset>
-		<legend><?php echo __('Add User'); ?></legend>
-	<?php
-		echo $this->Form->input('name');
-		echo $this->Form->input('username');
-		echo $this->Form->input('password');
-		echo $this->Form->input('role');
-		echo $this->Form->input('manager_id');
-	?>
-	</fieldset>
-<?php echo $this->Form->end(__('Submit')); ?>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
+	
+	<legend><?php echo __('Add User'); ?></legend>
 
-		<li><?php echo $this->Html->link(__('List Users'), array('action' => 'index')); ?></li>
-		<li><?php echo $this->Html->link(__('List Managers'), array('controller' => 'managers', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Manager'), array('controller' => 'managers', 'action' => 'add')); ?> </li>
-	</ul>
-</div>
+	<?php
+		$form = $this->Form->create('User'); 
+		$form .= $this->Form->input('name', array(
+			'label' => 'Nome',
+			'div' => 'form-group',
+			'class' => 'form-control',
+			'type' => 'text'
+		));
+		$form .= $this->Form->input('username', array(
+			'label' => 'Usuário',
+			'div' => 'form-group',
+			'class' => 'form-control',
+			'type' => 'text'
+		));
+		$form .= $this->Form->input('password', array(
+			'label' => 'Senha',
+			'div' => 'form-group',
+			'class' => 'form-control',
+			'type' => 'text'
+		));
+		$form .= $this->Form->input('role', array(
+			'label' => 'Função',
+			'div' => 'form-group',
+			'class' => 'form-control',
+			'type' => 'text'
+		));
+		$form .= $this->Form->input('manager_id', array(
+			'label' => 'Gestora',
+			'div' => 'form-group',
+			'class' => 'form-control',
+			'type' => 'select'
+		));
+		$form .= $this->Form->end(array(
+			'label'=>'Salvar',
+			'class'=> 'btn btn-block btn-primary')
+		);
+
+		echo $form;
+	?>
+	
