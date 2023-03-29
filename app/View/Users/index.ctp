@@ -36,7 +36,6 @@
 							<?php echo $this->Html->link($user['Manager']['name'], array('controller' => 'managers', 'action' => 'view', $user['Manager']['id'])); ?>
 						</td>
 						<td class="actions">
-							<?php echo $this->Html->link(__('Detalhes'), array('action' => 'view', $user['User']['id'])); ?>
 							<?php echo $this->Html->link(__('Editar'), array('action' => 'edit', $user['User']['id'])); ?>
 							<?php echo $this->Form->postLink(__('Deletar'), array('action' => 'delete', $user['User']['id']), array('confirm' => __('Tem certeza de que deseja excluir %s?', $user['User']['name']))); ?>
 						</td>
