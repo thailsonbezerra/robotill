@@ -1,89 +1,37 @@
 <div class="robots view">
-<h2><?php echo __('Robot'); ?></h2>
-	<dl>
-		<dt><?php echo __('Id'); ?></dt>
-		<dd>
-			<?php echo h($robot['Robot']['id']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Type'); ?></dt>
-		<dd>
-			<?php echo h($robot['Robot']['type']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Type Curt'); ?></dt>
-		<dd>
-			<?php echo h($robot['Robot']['type_curt']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Description'); ?></dt>
-		<dd>
-			<?php echo h($robot['Robot']['description']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Created'); ?></dt>
-		<dd>
-			<?php echo h($robot['Robot']['created']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Modified'); ?></dt>
-		<dd>
-			<?php echo h($robot['Robot']['modified']); ?>
-			&nbsp;
-		</dd>
-	</dl>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('Edit Robot'), array('action' => 'edit', $robot['Robot']['id'])); ?> </li>
-		<li><?php echo $this->Form->postLink(__('Delete Robot'), array('action' => 'delete', $robot['Robot']['id']), array('confirm' => __('Are you sure you want to delete # %s?', $robot['Robot']['id']))); ?> </li>
-		<li><?php echo $this->Html->link(__('List Robots'), array('action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Robot'), array('action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Tickets'), array('controller' => 'tickets', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Ticket'), array('controller' => 'tickets', 'action' => 'add')); ?> </li>
-	</ul>
-</div>
-<div class="related">
-	<h3><?php echo __('Related Tickets'); ?></h3>
-	<?php if (!empty($robot['Ticket'])): ?>
-	<table cellpadding = "0" cellspacing = "0">
-	<tr>
-		<th><?php echo __('Id'); ?></th>
-		<th><?php echo __('Title'); ?></th>
-		<th><?php echo __('Open'); ?></th>
-		<th><?php echo __('Cod'); ?></th>
-		<th><?php echo __('Created'); ?></th>
-		<th><?php echo __('Modified'); ?></th>
-		<th><?php echo __('User Id'); ?></th>
-		<th><?php echo __('Robot Id'); ?></th>
-		<th><?php echo __('Manager Id'); ?></th>
-		<th class="actions"><?php echo __('Actions'); ?></th>
-	</tr>
-	<?php foreach ($robot['Ticket'] as $ticket): ?>
-		<tr>
-			<td><?php echo $ticket['id']; ?></td>
-			<td><?php echo $ticket['title']; ?></td>
-			<td><?php echo $ticket['open']; ?></td>
-			<td><?php echo $ticket['cod']; ?></td>
-			<td><?php echo $ticket['created']; ?></td>
-			<td><?php echo $ticket['modified']; ?></td>
-			<td><?php echo $ticket['user_id']; ?></td>
-			<td><?php echo $ticket['robot_id']; ?></td>
-			<td><?php echo $ticket['manager_id']; ?></td>
-			<td class="actions">
-				<?php echo $this->Html->link(__('View'), array('controller' => 'tickets', 'action' => 'view', $ticket['id'])); ?>
-				<?php echo $this->Html->link(__('Edit'), array('controller' => 'tickets', 'action' => 'edit', $ticket['id'])); ?>
-				<?php echo $this->Form->postLink(__('Delete'), array('controller' => 'tickets', 'action' => 'delete', $ticket['id']), array('confirm' => __('Are you sure you want to delete # %s?', $ticket['id']))); ?>
-			</td>
-		</tr>
-	<?php endforeach; ?>
-	</table>
-<?php endif; ?>
+	<h2><?php echo __('Robo'); ?></h2>
 
-	<div class="actions">
-		<ul>
-			<li><?php echo $this->Html->link(__('New Ticket'), array('controller' => 'tickets', 'action' => 'add')); ?> </li>
-		</ul>
+	<h3 class="featurette-heading"><?= $robot['Robot']['type'] ?>, <span class="text-muted"><?= $robot['Robot']['type_curt'] ?></span></h3>
+	<p class="lead"><?= $robot['Robot']['description'] ?> </p>
+
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h4>Tickets Relacionados</h4>
+		</div>
+		<?php if (!empty($robot['Ticket'])) : ?>
+			<table class='table'>
+				<tr>
+					<th>Codigo</th>
+					<th>Titulo</th>
+					<th>Gestora</th>
+				</tr>
+				<?php foreach ($robot['Ticket'] as $ticket) : ?>
+					<tr>
+						<td><?= $this->Html->link(
+								$ticket['cod'] . $ticket['id'],
+								'../tickets/edit/' . $ticket['id'],
+								array('class' =>  $ticket['open'] ? 'btn btn-primary' : 'btn btn-info')
+							);
+							?></td>
+						<td><?php echo $ticket['title']; ?></td>
+						<td><?php echo $managers[$ticket['manager_id']]; ?></td>
+					</tr>
+				<?php endforeach; ?>
+			<?php endif; ?>
+			</table>
+			<ul style="display:flex; justify-content: center;" class="pager">
+				<li><?= $this->Paginator->prev('Anterior'); ?></li>
+				<li><?= $this->Paginator->next('Proximo'); ?></li>
+			</ul>
+
 	</div>
-</div>

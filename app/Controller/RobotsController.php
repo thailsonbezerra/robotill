@@ -37,7 +37,10 @@ class RobotsController extends AppController {
 			throw new NotFoundException(__('Invalid robot'));
 		}
 		$options = array('conditions' => array('Robot.' . $this->Robot->primaryKey => $id));
-		$this->set('robot', $this->Robot->find('first', $options));
+		$robot = $this->Robot->find('first', $options);
+
+		$managers = $this->Robot->Ticket->Manager->find('list', array('fields' => 'name_curt'));
+		$this->set(compact('robot','managers') );
 	}
 
 /**
