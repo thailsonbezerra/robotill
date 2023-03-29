@@ -37,7 +37,9 @@ class ManagersController extends AppController {
 			throw new NotFoundException(__('Invalid manager'));
 		}
 		$options = array('conditions' => array('Manager.' . $this->Manager->primaryKey => $id));
-		$this->set('manager', $this->Manager->find('first', $options));
+		$manager = $this->Manager->find('first', $options);
+		$robots = $this->Manager->Ticket->Robot->find('list',array('fields'=> 'type_curt'));
+		$this->set(compact('manager','robots'));
 	}
 
 /**
