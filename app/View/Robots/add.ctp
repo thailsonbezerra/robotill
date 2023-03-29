@@ -1,5 +1,5 @@
 <div class="robots form">
-	<legend><?php echo __('Add Robot'); ?></legend>
+	<legend><?php echo __('Adicionar Robô'); ?></legend>
 
 	<?php
 		$form = $this->Form->create('Robot'); 
@@ -7,13 +7,17 @@
 			'label' => 'Tipo',
 			'div' => 'form-group',
 			'class' => 'form-control',
-			'type' => 'text'
+			'type' => 'text',
+			'placeholder' => 'Nome Robô'
 		));
 		$form .= $this->Form->input('type_curt', array(
 			'label' => 'Sigla Tipo',
 			'div' => 'form-group',
 			'class' => 'form-control',
-			'type' => 'text'
+			'type' => 'text',
+			'placeholder' => 'NR'
+
+			
 		));
 		$form .= $this->Form->input('description', array(
 			'label' => 'Descrição',

@@ -79,18 +79,18 @@
 					<li><a href="/tickets/add">Abrir</a></li>
 				</ol>
 				<li>
-					<a href="#" data-toggle="collapse" data-target="#nav-robots">Robots <span class="glyphicon glyphicon-menu-down navbar-right"></span></a>
+					<a href="#" data-toggle="collapse" data-target="#nav-robots">Robos <span class="glyphicon glyphicon-menu-down navbar-right"></span></a>
 				</li>
 				<ol id="nav-robots" class="nav nav-sub-sidebar collapse out">
 					<li><a href="/robots">Listar</a></li>
 					<li><a href="/robots/add">Abrir</a></li>
 				</ol>
-				<li><a href="#" data-toggle="collapse" data-target="#nav-managers">Managers <span class="glyphicon glyphicon-menu-down navbar-right"></span></a></li>
+				<li><a href="#" data-toggle="collapse" data-target="#nav-managers">Gestoras <span class="glyphicon glyphicon-menu-down navbar-right"></span></a></li>
 				<ol id="nav-managers" class="nav nav-sub-sidebar collapse out">
 					<li><a href="/managers">Listar</a></li>
 					<li><a href="/managers/add">Abrir</a></li>
 				</ol>
-				<li><a href="#" data-toggle="collapse" data-target="#nav-users">Users <span class="glyphicon glyphicon-menu-down navbar-right"></span></a></li>
+				<li><a href="#" data-toggle="collapse" data-target="#nav-users">Usuários <span class="glyphicon glyphicon-menu-down navbar-right"></span></a></li>
 				<ol id="nav-users" class="nav nav-sub-sidebar collapse out">
 					<li><a href="/users">Listar</a></li>
 					<li><a href="/users/add">Abrir</a></li>

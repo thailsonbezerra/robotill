@@ -1,6 +1,6 @@
 <div class="users form">
 	
-	<legend><?php echo __('Add User'); ?></legend>
+	<legend><?php echo __('Adicionar Usuário'); ?></legend>
 
 	<?php
 		$form = $this->Form->create('User'); 

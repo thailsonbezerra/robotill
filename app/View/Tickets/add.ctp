@@ -24,6 +24,7 @@
 			'div' => 'form-group',
 			'class' => 'form-control',
 			'type' => 'textarea',
+			'required'
 		));
 		
 		$form .= $this->Form->end(array(
