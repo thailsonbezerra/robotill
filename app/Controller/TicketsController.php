@@ -3,11 +3,40 @@ App::uses('AppController', 'Controller');
 class TicketsController extends AppController {
 
 	public function index() {
-		$this->Paginator->settings = array(
-			'order'  => array('Ticket.created' => 'desc'),
-			'limit'  => 10,
+	
+		$conditions = array();
+
+		$inicio = empty($this->request->data['Ticket']['start_date']) ? '0001-01-01' : $this->request->data['Ticket']['start_date'];
+		$fim = empty($this->request->data['Ticket']['end_date']) ? date("Y-m-d") : $this->request->data['Ticket']['end_date'];
+		
+		$conditions['date(Ticket.created) BETWEEN ? AND ?'] = array(
+			$inicio,
+			$fim
 		);
-		$this->set('tickets', $this->paginate('Ticket'));
+
+		if (!empty($this->request->data['Ticket']['title'])) {
+			$conditions['Ticket.title ILIKE'] = '%' . $this->request->data['Ticket']['title'] . '%';
+		}
+
+		if (!empty($this->request->data['Ticket']['type_robot'])) {
+			$conditions['Ticket.robot_id'] = $this->request->data['Ticket']['type_robot'];
+		}
+
+		if (!empty($this->request->data['Ticket']['status'])) {
+			$conditions['Ticket.open'] = $this->request->data['Ticket']['status'];
+		}
+
+		$this->Ticket->order = array('Ticket.created DESC');
+		$tickets = $this->Ticket->find('all', array(
+			'conditions' => $conditions
+		));
+
+		$tipo = $this->Ticket->Robot->find('list',
+			array(
+				'fields' => array('Robot.type')
+		));
+
+		$this->set(compact('tickets', 'tipo'));
 	
 	}
 
@@ -51,11 +80,10 @@ class TicketsController extends AppController {
 				$this->Ticket->TicketComment->create();
 				$this->Ticket->TicketComment->save($data_ticket_comment);
 				$this->Ticket->TicketComment->clear();
-
-				$this->Flash->set('The ticket has been saved.');
+				$this->Flash->success('Ticket aberto com sucesso.');
 				return $this->redirect('/');
 			} else {
-				$this->Flash->error(__('The ticket could not be saved. Please, try again.'));
+				$this->Flash->error(__('Não foi possível salvar o Ticket. Por favor, tente novamente.'));
 			}
 		}
 
@@ -69,7 +97,7 @@ class TicketsController extends AppController {
 
 	public function edit($id = null) {
 		if (!$this->Ticket->exists($id)) {
-			throw new NotFoundException(__('Invalid ticket'));
+			throw new NotFoundException(__('Ticket Inválido'));
 		}
 		if ($this->request->is(array('post', 'put'))) {
 			$this->Ticket->id = $id;
@@ -101,10 +129,10 @@ class TicketsController extends AppController {
 				$this->Ticket->TicketComment->save($data_ticket_comment);
 				$this->Ticket->TicketComment->clear();
 
-				$this->Flash->success('The ticket has been saved.');
+				$this->Flash->success('Ticket aberto com sucesso.');
 				return $this->redirect('/');
 			} else {
-				$this->Flash->error(__('The ticket could not be saved. Please, try again.'));
+				$this->Flash->error(__('Não foi possível salvar o Ticket. Por favor, tente novamente.'));
 			}
 		} else {
 			$options = array('conditions' => array('Ticket.' . $this->Ticket->primaryKey => $id));
