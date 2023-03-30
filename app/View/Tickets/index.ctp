@@ -59,7 +59,7 @@
 		'empty' => 'Status',
 		'class' => 'form-control',
 		'type' => 'select',
-		'options' => array(true => 'Aberto', false => 'Fechado')
+		'options' => array('open' => 'Aberto', 'close' => 'Fechado')
 	));
 
 	$filtro .= $this->Form->end(array(

@@ -23,20 +23,26 @@ class TicketsController extends AppController {
 		}
 
 		if (!empty($this->request->data['Ticket']['status'])) {
-			$conditions['Ticket.open'] = $this->request->data['Ticket']['status'];
+			$conditions['Ticket.open'] = $this->request->data['Ticket']['status'] === 'close' ?  false : true; 
 		}
 
 		$this->Ticket->order = array('Ticket.created DESC');
-		$tickets = $this->Ticket->find('all', array(
-			'conditions' => $conditions
-		));
 
-		$tipo = $this->Ticket->Robot->find('list',
+		$this->Paginator->settings = array(
+			'limit' => 5,
+			'order' => array('Ticket.created' => 'desc'),
+			'conditions' => $conditions
+		);
+		$tickets = $this->Paginator->paginate('Ticket');
+
+		$tipo = $this->Ticket->Robot->find(
+			'list',
 			array(
 				'fields' => array('Robot.type')
-		));
+			)
+		);
 
-		$this->set(compact('tickets', 'tipo'));
+		$this->set(compact('tickets','tipo'));
 	
 	}
 
