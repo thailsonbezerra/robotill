@@ -121,8 +121,6 @@ class TicketsController extends AppController {
 			$this->request->data['Ticket']['manager_id'] = $users[$user_id];
 			
 			if ($this->Ticket->save($this->request->data)) {
-
-
 				$data_ticket_comment = [
 					'TicketComment' => [
 						'comment' => $this->request->data['Ticket']['comment'],
@@ -131,11 +129,23 @@ class TicketsController extends AppController {
 					]
 				];
 
+				$codigoChamado = $this->Ticket->find('list', array(
+					'fields' => 'Ticket.cod',
+					'conditions' => array('Ticket.id =' => $id)
+				));
+
 				$this->Ticket->TicketComment->create();
 				$this->Ticket->TicketComment->save($data_ticket_comment);
 				$this->Ticket->TicketComment->clear();
 
-				$this->Flash->success('Ticket aberto com sucesso.');
+				if($this->request->data['Ticket']['open']){
+					$this->Flash->success('Interação ao ticket ' . $codigoChamado[$id] . $id . ' realizada com sucesso.');
+				} else {
+					$this->Flash->success('Ticket ' . $codigoChamado[$id] . $id . ' fechado com sucesso.');
+				}
+
+			
+
 				return $this->redirect('/');
 			} else {
 				$this->Flash->error(__('Não foi possível salvar o Ticket. Por favor, tente novamente.'));

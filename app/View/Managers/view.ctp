@@ -36,10 +36,4 @@
 			</table>
 		<?php endif; ?>
 		</table>
-
-		<ul style="display:flex; justify-content: center;" class="pager">
-			<li><?= $this->Paginator->prev('Anterior'); ?></li>
-			<li><?= $this->Paginator->next('Proximo'); ?></li>
-		</ul>
-
 	</div>
