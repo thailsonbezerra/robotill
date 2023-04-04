@@ -1,3 +1,5 @@
+<?php $currentRole = intval($this->Session->read('Auth.User.role')); ?>
+
 <!DOCTYPE html>
 <html>
 
@@ -60,7 +62,7 @@
 				<a class="navbar-brand" href="/">ROBOTILL</a>
 			</div>
 			<ul class="nav navbar-nav navbar-right" style="margin-right: 0;">
-				<li><a href="#"><span class="glyphicon glyphicon-user"></span> Bem vindo, <?php echo $this->Session->read('Auth.User.username') ?></a></li>
+				<li><a href="#"><span class="glyphicon glyphicon-user"></span> Bem vindo, <?= $this->Session->read('Auth.User.username') ?></a></li>
 				<li><a href="/users/logout"><span class="glyphicon glyphicon-log-in"></span> Sair</a></li>
 			</ul>
 		</div>
@@ -81,20 +83,32 @@
 				<li>
 					<a href="#" data-toggle="collapse" data-target="#nav-robots">Robos <span class="glyphicon glyphicon-menu-down navbar-right"></span></a>
 				</li>
+
 				<ol id="nav-robots" class="nav nav-sub-sidebar collapse out">
 					<li><a href="/robots">Listar</a></li>
 					<li><a href="/robots/add">Criar</a></li>
 				</ol>
-				<li><a href="#" data-toggle="collapse" data-target="#nav-managers">Gestoras <span class="glyphicon glyphicon-menu-down navbar-right"></span></a></li>
-				<ol id="nav-managers" class="nav nav-sub-sidebar collapse out">
-					<li><a href="/managers">Listar</a></li>
-					<li><a href="/managers/add">Criar</a></li>
-				</ol>
-				<li><a href="#" data-toggle="collapse" data-target="#nav-users">Usuários <span class="glyphicon glyphicon-menu-down navbar-right"></span></a></li>
-				<ol id="nav-users" class="nav nav-sub-sidebar collapse out">
-					<li><a href="/users">Listar</a></li>
-					<li><a href="/users/add">Criar</a></li>
-				</ol>
+
+				<?php if ($currentRole === 0) : ?>
+
+					<li><a href="#" data-toggle="collapse" data-target="#nav-managers">Gestoras <span class="glyphicon glyphicon-menu-down navbar-right"></span></a></li>
+					<ol id="nav-managers" class="nav nav-sub-sidebar collapse out">
+						<li><a href="/managers">Listar</a></li>
+						<li><a href="/managers/add">Criar</a></li>
+					</ol>
+				<?php endif; ?>
+
+				<?php if ($currentRole <= 1) : ?>
+
+					<li><a href="#" data-toggle="collapse" data-target="#nav-users">Usuários <span class="glyphicon glyphicon-menu-down navbar-right"></span></a></li>
+					<ol id="nav-users" class="nav nav-sub-sidebar collapse out">
+						<li><a href="/users">Listar</a></li>
+						<li><a href="/users/add">Criar</a></li>
+					</ol>
+
+				<?php endif; ?>
+
+
 			</ul>
 		</div>
 
