@@ -4,8 +4,13 @@ App::uses('AppController', 'Controller');
 class RobotsController extends AppController {
 
 	public function index() {
-		$this->Robot->recursive = 0;
-		$this->set('robots', $this->Paginator->paginate());
+		$this->Paginator->settings = array(
+			'limit' => 20,
+			'order' => array('Robot.created' => 'desc'),
+		);
+		$robots = $this->Paginator->paginate('Robot');
+
+		$this->set(compact('robots'));
 	}
 
 	public function view($id = null) {
@@ -23,24 +28,24 @@ class RobotsController extends AppController {
 		if ($this->request->is('post')) {
 			$this->Robot->create();
 			if ($this->Robot->save($this->request->data)) {
-				$this->Flash->success(__('The robot has been saved.'));
+				$this->Flash->success(__('O robô foi salvo.'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Flash->error(__('The robot could not be saved. Please, try again.'));
+				$this->Flash->error(__('O robô não pôde ser salvo. Por favor, tente novamente.'));
 			}
 		}
 	}
 
 	public function edit($id = null) {
 		if (!$this->Robot->exists($id)) {
-			throw new NotFoundException(__('Invalid robot'));
+			throw new NotFoundException(__('Robô inválido'));
 		}
 		if ($this->request->is(array('post', 'put'))) {
 			if ($this->Robot->save($this->request->data)) {
-				$this->Flash->success(__('The robot has been saved.'));
+				$this->Flash->success(__('O robô foi salvo.'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Flash->error(__('The robot could not be saved. Please, try again.'));
+				$this->Flash->error(__('O robô não pôde ser salvo. Por favor, tente novamente.'));
 			}
 		} else {
 			$options = array('conditions' => array('Robot.' . $this->Robot->primaryKey => $id));
@@ -50,13 +55,13 @@ class RobotsController extends AppController {
 
 	public function delete($id = null) {
 		if (!$this->Robot->exists($id)) {
-			throw new NotFoundException(__('Invalid robot'));
+			throw new NotFoundException(__('Robô inválido'));
 		}
 		$this->request->allowMethod('post', 'delete');
 		if ($this->Robot->delete($id)) {
-			$this->Flash->success(__('The robot has been deleted.'));
+			$this->Flash->success(__('O robô foi excluído.'));
 		} else {
-			$this->Flash->error(__('The robot could not be deleted. Please, try again.'));
+			$this->Flash->error(__('O robô não pôde ser excluído. Por favor, tente novamente.'));
 		}
 		return $this->redirect(array('action' => 'index'));
 	}
