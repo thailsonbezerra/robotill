@@ -26,7 +26,6 @@
 			'label' => 'Função',
 			'div' => 'form-group',
 			'class' => 'form-control',
-			'type' => 'text'
 		));
 		$form .= $this->Form->input('manager_id', array(
 			'label' => 'Gestora',

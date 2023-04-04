@@ -31,11 +31,7 @@ App::uses('Controller', 'Controller');
  * @link		https://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
 class AppController extends Controller {
-    /**
-     * Components
-     *
-     * @var array
-     */
+  
     public $components = array(
         'Paginator',
         'Session',
@@ -53,4 +49,15 @@ class AppController extends Controller {
             )
         )
     );
+
+    function beforeFilter() {
+        $roles = [
+            0=>'Administrador',
+            1=>'Supervisor',
+            2=>'Usuário'
+        ];
+        $this->set(compact('roles'));
+    }
+
+
 }

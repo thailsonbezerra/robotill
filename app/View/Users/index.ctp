@@ -28,16 +28,16 @@
 			<tbody>
 				<?php foreach ($users as $user) : ?>
 					<tr>
-						<td><?php echo h($user['User']['name']); ?>&nbsp;</td>
-						<td><?php echo h($user['User']['username']); ?>&nbsp;</td>
-						<td><?php echo h($user['User']['role']); ?>&nbsp;</td>
-						<td><?php echo h($user['User']['created']); ?>&nbsp;</td>
+						<td><?= $user['User']['name']; ?>&nbsp;</td>
+						<td><?= $user['User']['username']; ?>&nbsp;</td>
+						<td><?= $roles[$user['User']['role']]; ?>&nbsp;</td>
+						<td><?= $user['User']['created']; ?>&nbsp;</td>
 						<td>
-							<?php echo $this->Html->link($user['Manager']['name'], array('controller' => 'managers', 'action' => 'view', $user['Manager']['id'])); ?>
+							<?= $this->Html->link($user['Manager']['name'], array('controller' => 'managers', 'action' => 'view', $user['Manager']['id'])); ?>
 						</td>
 						<td class="actions">
-							<?php echo $this->Html->link(__('Editar'), array('action' => 'edit', $user['User']['id'])); ?>
-							<?php echo $this->Form->postLink(__('Deletar'), array('action' => 'delete', $user['User']['id']), array('confirm' => __('Tem certeza de que deseja excluir %s?', $user['User']['name']))); ?>
+							<?= $this->Html->link(__('Editar'), array('action' => 'edit', $user['User']['id'])); ?>
+							<?= $this->Form->postLink(__('Deletar'), array('action' => 'delete', $user['User']['id']), array('confirm' => __('Tem certeza de que deseja excluir %s?', $user['User']['name']))); ?>
 						</td>
 					</tr>
 				<?php endforeach; ?>
