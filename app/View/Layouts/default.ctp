@@ -86,11 +86,13 @@
 
 				<ol id="nav-robots" class="nav nav-sub-sidebar collapse out">
 					<li><a href="/robots">Listar</a></li>
-					<li><a href="/robots/add">Criar</a></li>
+					<?php if ($currentRole === 0) : ?>
+						<li><a href="/robots/add">Criar</a></li>
+					<?php endif; ?>
+
 				</ol>
 
 				<?php if ($currentRole === 0) : ?>
-
 					<li><a href="#" data-toggle="collapse" data-target="#nav-managers">Gestoras <span class="glyphicon glyphicon-menu-down navbar-right"></span></a></li>
 					<ol id="nav-managers" class="nav nav-sub-sidebar collapse out">
 						<li><a href="/managers">Listar</a></li>

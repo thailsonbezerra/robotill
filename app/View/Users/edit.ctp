@@ -37,11 +37,12 @@
 		'options' => $roles
 	));
 
+	$optionsManagers = array($this->Session->read('Auth.User.Manager.id') => $this->Session->read('Auth.User.Manager.name'));
 	$form .= $this->Form->input('manager_id', array(
 		'label' => 'Gestora',
 		'div' => 'form-group',
 		'class' => 'form-control',
-		'type' => 'select'
+		'options' => ($this->Session->read('Auth.User.role') != 0) ? $optionsManagers : $managers
 	));
 
 	$form .= $this->Form->end(array(
